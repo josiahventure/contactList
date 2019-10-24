@@ -1,0 +1,7 @@
+custom_css:
+  version: 1.0
+  css:
+    theme:
+      css/custom.css: {}
+  js:
+    js/profile.js: {}

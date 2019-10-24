@@ -1,0 +1,6 @@
+contactlistmodule.contact_list_menu:
+  title: 'Contacts'
+  description: 'Contact list'
+  route_name: contactlistmodule.contact_list
+  weight: 10
+  menu_name: main

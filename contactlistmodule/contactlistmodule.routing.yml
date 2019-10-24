@@ -1,0 +1,15 @@
+contactlistmodule.contact_list:
+  path: '/contacts'
+  defaults:
+    _form: '\Drupal\contactlistmodule\Form\Contactlist'
+    _title: 'Contact list'
+  requirements:
+    _permission: 'view contacts'
+
+contactlistmodule.contact_profile:
+  path: 'profile'
+  defaults:
+    _form: '\Drupal\contactlistmodule\Form\Contactprofile'
+    _title: 'Contact profile'
+  requirements:
+    _permission: 'view contacts'

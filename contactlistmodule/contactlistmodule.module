@@ -1,0 +1,5 @@
+<?php  /*** @file* This is     contactlistmodule     module.*/
+
+function contactlistmodule_page_attachments(array &$page) {
+  $page['#attached']['library'][] = 'contactlistmodule/custom_css';
+}

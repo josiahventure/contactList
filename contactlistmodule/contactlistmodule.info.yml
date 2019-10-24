@@ -1,0 +1,6 @@
+name: contactlistmodule
+description: Contact list
+package: Contact list
+type: module
+version: 1.0
+core: 8.x
