@@ -1,1 +1,1 @@
-<?php  /*** @file* This is     rsvplist     module.*/
+<?php  /*** @file* This is Contact list module for JosiahVendure.*/
