@@ -1,4 +1,5 @@
-  $('.link').mousedown(function(event) {
+  (function($) {
+    $('.link').mousedown(function(event) {
     var profile = ".profile_";
     profile += event.target.id;
     var loading = ".loading_";
