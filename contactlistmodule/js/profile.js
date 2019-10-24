@@ -1,16 +1,3 @@
-(function($) {
-  $('.control-label').mousedown(function(event) {
-    $.ajax({
-      type: "post",
-      url: 'contacts',
-      data: "somedata",
-      cache: false,
-      success: function(html) {
-        $('#contact_table').html(html);
-      }
-    });
-  });
-
   $('.link').mousedown(function(event) {
     var profile = ".profile_";
     profile += event.target.id;
