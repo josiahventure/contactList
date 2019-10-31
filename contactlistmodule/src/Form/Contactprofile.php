@@ -9,52 +9,70 @@ use Drupal\Core\Database\Database;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use \Symfony\Component\HttpFoundation\Response;
-/**
- * Provides an RSVP Email form.
- */
+use Drupal\cmrf_core\Core;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
 class Contactprofile extends FormBase {
 public function getFormId() {
     return 'contact_profile';
   }
-  protected function load() {
-    $id = \Drupal::request()->request->get('id');
-    $select = Database::getConnection()->select('civicrm_contact', 'c');
-    $select->join('civicrm_email', 'e', 'c.id = e.contact_id');
-    $select->join('civicrm_phone', 'p', 'c.id = p.contact_id');
-    $select->condition('c.id', $id);
-    $select->addField('c', 'display_name' );
-    $select->addField('e', 'email');
-    $select->addField('p', 'phone');
-    $select->addField('c', 'id');
-    $entries = $select->execute()->fetchAll(\PDO::FETCH_ASSOC);
-    return $entries;
+  /**
+  * get cmrf core
+  */
+  public static function create(ContainerInterface $container) {
+   $core = $container->get('cmrf_core.core');
+   return new static($core);
   }
 
+  public function __construct(core $core) {
+       $this->core = $core;
+  }
+
+  private function connector() {
+   return \Drupal::config('cmrf_example.settings')->get('connector');
+  }
+
+  /**
+  * connect to civicrm api3
+  */
+  public function getContactIds() {
+   $call=$this->core->createCall($this->connector(),'Contact','get',array('return'=>'display_name, email, phone, id', 'limit' => 50,),array());
+   $this->core->executeCall($call);
+   return $call->getReply();
+  }
+
+  /**
+  * form
+  */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    foreach ($entries = $this->load() as $entry) {
-    $form['name'] = [
-      '#type' => 'textfield',
-      '#title' => t('Name'),
-      '#value' => $entry['display_name'],
-    ];
-    $form['email'] = [
-      '#type' => 'email',
-      '#title' => t('Email'),
-      '#value' => $entry['email'],
-    ];
-    $form['phone_number'] = [
-      '#type' => 'tel',
-      '#title' => t('Phone'),
-      '#value' => $entry['phone'],
-    ];
-    // do not cache this page.
-    $form['$cache']['max-age'] = 0;
+    foreach ($entries = $this->getContactIds() as $entry2) {
+      if (is_array($entry2) || $entry2 instanceof Traversable) {
+        foreach ($entry2 as $entry) {
+          $form['name'] = [
+            '#type' => 'textfield',
+            '#title' => t('Name'),
+            '#value' => $entry['display_name'],
+          ];
+          $form['email'] = [
+            '#type' => 'email',
+            '#title' => t('Email'),
+            '#value' => $entry['email'],
+          ];
+          $form['phone_number'] = [
+            '#type' => 'tel',
+            '#title' => t('Phone'),
+            '#value' => $entry['phone'],
+          ];
+          // do not cache this page.
+          $form['$cache']['max-age'] = 0;
 
-    $form['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('submit'),
-    );
-  }
+          $form['submit'] = array(
+            '#type' => 'submit',
+            '#value' => t('submit'),
+          );
+        }
+      }
+    }
 
     $form['#prefix'] = '<td colspan="10">';
     $form['#suffix'] = '</td>';
@@ -62,16 +80,12 @@ public function getFormId() {
     return new Response(render($form));
   }
   public function validateForm(array &$form, FormStateInterface $form_state) {
-
   }
+
   public function submitForm(array &$form, FormStateInterface $form_state) {
     drupal_set_message(t('The form is working.'));
   }
 
   public function processTable(&$element, FormStateInterface $form_state, &$complete_form) {
-
-
   }
-
-
 }
