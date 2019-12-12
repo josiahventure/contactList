@@ -1,0 +1,15 @@
+<div class="title">{{form.name}}
+  <i class="material-icons edit_icon" style="font-size: 18px;" id=open_{{form.id}}>build</i>
+  <i class="material-icons close_edit_icon" style="font-size: 18px; display: none;" id=close_{{form.id}}>clear</i>
+</div>
+<div class="form_info">
+  <div class="address_info column_content {{form.id}}">
+{% for row in form.var %}
+     {{row.name}}</br>
+     {{row.val}} </br>
+{% endfor %}
+</div>
+</div>
+<div class="form_edit" id="form_{{form.id}}" style="display: none;">
+  {{form}}
+</div>
