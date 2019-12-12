@@ -1,0 +1,153 @@
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 18px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+  float: right;
+  cursor: pointer;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.content tr {
+  color: #484848;
+}
+
+.content tr:hover {
+  color: white;
+}
+
+.content a:hover, .content a:visited, .content a:link, .content a:active {
+  text-decoration: none;
+  color: black;
+}
+
+.loading_profile {
+  display: none;
+  padding-bottom: 150px;
+  padding-top: 150px;
+  font-size: 20px;
+  text-align: center;
+  vertical-align: center;
+}
+
+.hide {
+  display: none;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.active_content {
+  color: white;
+  background: #502F91 !important;
+}
+
+tr:nth-child(odd) {
+  background-color: white !important;
+}
+
+tr:nth-child(even) {
+  background-color: #F0F8FF;
+}
+
+.content:hover {
+  background-color: #502F91 !important;
+  color: white;
+}
+
+.link {
+  cursor: pointer;
+  font-weight: normal;
+}
+
+.profile, .loading {
+  display: none;
+  height: 300px;
+  background-color: white !important;
+  color: black;
+}
+
+.active_content {
+  display: table-row;
+}
+
+.checkbox {
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  margin-left: 20px !important;
+}
+
+.profile .checkbox {
+  display: none;
+}
+
+#contact_table #toolbar-administration, #contact_table .page-header, #contact_table .menu--footer, #contact_table .alert-dismissible {
+  display: none !important;
+}
+
+#contact_table .main-container {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.profile_block {
+  width: 30%;
+  display: inline-block;
+  margin-right: 20px;
+  vertical-align: top;
+}
+
+.basic_info_edit, .address_edit {
+  display: none;
+}
+
+.profile_hide #toolbar-administration, .profile_hide #navbar, .profile_hide .region-footer {
+  display: none;
+}
+
+.profile_hide {
+  background-color: rgb(252, 252, 255);
+}
+
+.profile_hide .container {
+  width: auto !important;
+}
+
+.title {
+    width: 100%; font-weight: bold; background-color: #0062ad; color: white; padding: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px;
+}
+
+.form_info, .form_edit {
+  background-color: white;
+  margin-bottom: 20px;
+  padding: 5px;
+}
+
+.form_edit {
+  margin-top: -20px;
+}
