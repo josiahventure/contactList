@@ -9,7 +9,7 @@
       data: dataString,
       cache: false,
       success: function(html) {
-        for(var i=0; i<9; i++) {
+        for(var i=0; i<11; i++) {
         html = html.replace("<script", "<!--");
         html = html.replace("/script>", "-->");
       }
@@ -18,7 +18,7 @@
     });
   });
 
-  $('.link').mousedown(function(event) {   // profile load
+$( "#contact_table" ).on( "click", ".link", function(event) {  // profile load
     var profile = ".profile_";
     profile += event.target.id;
     var loading = ".loading_";
@@ -53,7 +53,7 @@
     }
   });
 
-  $( ".table" ).on( "click", ".edit_icon", function() {
+  $( "#contact_table" ).on( "click", ".edit_icon", function() {
       var id = this.id.replace("open_", "");
       $("."+id).hide();
       $("#open_"+id).hide();
@@ -61,7 +61,7 @@
       $("#form_"+id).css('display', 'inline-block');
   });
 
-  $( ".table" ).on( "click", ".close_edit_icon", function() {
+  $( "#contact_table" ).on( "click", ".close_edit_icon", function() {
       var id = this.id.replace("close_", "");
       $("."+id).css('display', 'block');
       $("#open_"+id).css('display', 'inline-block');
