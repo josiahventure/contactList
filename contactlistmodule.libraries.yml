@@ -1,8 +1,0 @@
-custom_css:
-  version: 1.0
-  css:
-    theme:
-      css/custom.css: {}
-      'https://fonts.googleapis.com/icon?family=Material+Icons': { type: external }
-  js:
-    js/profile.js: {}
